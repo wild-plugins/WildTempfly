@@ -66,7 +66,7 @@ public final class WildTempfly extends JavaPlugin {
                         Player player = player(ctx);
                         if (player != null) {
                             FlyService.Data data = fly.data(player.getUniqueId());
-                            texts.send(player, "fly.time", "time", texts.duration(data == null ? 0 : data.seconds()));
+                            texts.send(player, "fly.time", "time", fly.timeText(player, data == null ? 0 : data.seconds()));
                         }
                         return Command.SINGLE_SUCCESS;
                     })).build(), "Turns fly on or off", flyAliases);
@@ -162,9 +162,15 @@ public final class WildTempfly extends JavaPlugin {
                     } else {
                         fly.refresh(result.getKey().getKey(), result.getValue());
                         texts.send(sender, message, "player", result.getKey().getValue(),
-                                "time", texts.duration(seconds), "total", texts.duration(result.getValue()));
+                                "time", texts.duration(seconds), "total", total(message, result.getKey().getKey(), result.getValue()));
                     }
                 });
+    }
+
+    private String total(String message, UUID uuid, long seconds) {
+        Player target = Bukkit.getPlayer(uuid);
+        if (message.equals("admin.check") && target != null) return fly.timeText(target, seconds);
+        return texts.duration(seconds);
     }
 
     private Player player(CommandContext<CommandSourceStack> ctx) {

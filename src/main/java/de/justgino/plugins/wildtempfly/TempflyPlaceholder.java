@@ -39,7 +39,7 @@ public final class TempflyPlaceholder extends PlaceholderExpansion {
         FlyService.Data data = plugin.fly().data(player.getUniqueId());
         long seconds = data == null ? 0 : data.seconds();
         return switch (params) {
-            case "time" -> plugin.texts().duration(seconds);
+            case "time" -> player.getPlayer() != null ? plugin.fly().timeText(player.getPlayer(), seconds) : plugin.texts().duration(seconds);
             case "seconds" -> String.valueOf(seconds);
             case "enabled" -> String.valueOf(data != null && data.enabled());
             default -> null;

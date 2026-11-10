@@ -111,7 +111,11 @@ public final class FlyService implements Listener {
         return false;
     }
 
-    private boolean unlimited(Player player) {
+    public String timeText(Player player, long seconds) {
+        return unlimited(player) ? plugin.texts().raw("time.unlimited") : plugin.texts().duration(seconds);
+    }
+
+    public boolean unlimited(Player player) {
         return player.hasPermission("wildtempfly.bypass.time");
     }
 
@@ -123,7 +127,7 @@ public final class FlyService implements Listener {
         }
         if (data.enabled) {
             disable(player, data);
-            plugin.texts().send(player, "fly.off", "time", plugin.texts().duration(data.seconds()));
+            plugin.texts().send(player, "fly.off", "time", timeText(player, data.seconds()));
             sound(player, "disable");
             return;
         }
@@ -138,7 +142,7 @@ public final class FlyService implements Listener {
         data.enabled = true;
         player.setAllowFlight(true);
         data.timer = player.getScheduler().runAtFixedRate(plugin, task -> tick(player, data), null, 20L, 20L);
-        plugin.texts().send(player, "fly.on", "time", unlimited(player) ? "∞" : plugin.texts().duration(data.seconds()));
+        plugin.texts().send(player, "fly.on", "time", timeText(player, data.seconds()));
         sound(player, "enable");
     }
 
@@ -155,7 +159,7 @@ public final class FlyService implements Listener {
         }
         if (unlimited(player)) {
             if (plugin.getConfig().getBoolean("actionbar", true) && plugin.getConfig().getBoolean("actionbar-unlimited", false)) {
-                player.sendActionBar(plugin.texts().get("fly.actionbar", "time", "∞"));
+                player.sendActionBar(plugin.texts().get("fly.actionbar", "time", timeText(player, 0)));
             }
             return;
         }
