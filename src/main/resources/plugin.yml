@@ -1,0 +1,45 @@
+name: WildTempfly
+version: '${project.version}'
+main: de.justgino.plugins.wildtempfly.WildTempfly
+description: '${project.description}'
+api-version: '26.1'
+folia-supported: true
+authors: [ JustGino ]
+softdepend: [ PlaceholderAPI ]
+libraries:
+  - org.mariadb.jdbc:mariadb-java-client:${mariadb.version}
+
+permissions:
+  wildtempfly.fly:
+    description: /fly with the own fly time
+    default: true
+  wildtempfly.bypass.time:
+    description: Fly without using fly time
+    default: op
+  wildtempfly.bypass.world:
+    description: Fly in every world
+    default: op
+  wildtempfly.admin.add:
+    description: /tempfly add
+    default: op
+  wildtempfly.admin.remove:
+    description: /tempfly remove
+    default: op
+  wildtempfly.admin.set:
+    description: /tempfly set and reset
+    default: op
+  wildtempfly.admin.check:
+    description: /tempfly check
+    default: op
+  wildtempfly.admin.reload:
+    description: /tempfly reload
+    default: op
+  wildtempfly.admin:
+    description: Every wildtempfly.admin node
+    default: op
+    children:
+      wildtempfly.admin.add: true
+      wildtempfly.admin.remove: true
+      wildtempfly.admin.set: true
+      wildtempfly.admin.check: true
+      wildtempfly.admin.reload: true

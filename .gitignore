@@ -1,0 +1,7 @@
+target/
+.idea/
+*.iml
+out/
+run/
+dependency-reduced-pom.xml
+.claude/settings.local.json

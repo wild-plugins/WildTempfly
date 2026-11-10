@@ -1,0 +1,25 @@
+# WildTempfly - database
+# Changes need a server restart.
+
+# sqlite  - one file in the plugin folder, for a single server
+# mariadb - one shared database, fly time follows players across servers (MySQL works too)
+type: "sqlite"
+
+sqlite:
+  file: "flytime.db"
+
+mariadb:
+  host: "localhost"
+  port: "3306"
+  database: "wildtempfly_db"
+  username: "wildtempfly_name"
+  password: ""
+  pool-size: 4
+  # Extra JDBC parameters, for example sslMode: trust
+  properties: {}
+
+# Must be the same on every server of a network
+table-prefix: "wildtempfly_"
+
+# Seconds between two syncs of the fly time with the database
+sync-interval: 10

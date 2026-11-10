@@ -1,0 +1,45 @@
+# WildTempfly - texts
+# Format: MiniMessage (https://docs.advntr.dev/minimessage/format.html), "" hides a message.
+
+prefix: "<bold><gradient:#c8f7dd:#4cc38a>ᴛᴇᴍᴘꜰʟʏ</gradient></bold> <dark_gray>» <gray>"
+
+fly:
+  "on": "Fly <green>on</green>. Time left: <white>{time}"
+  "off": "Fly <red>off</red>. Time left: <white>{time}"
+  time: "Your fly time: <white>{time}"
+  no-time: "<red>You have no fly time left."
+  world: "<red>You can't fly in this world."
+  world-left: "<red>Fly turned off, flying is not allowed in this world."
+  expired: "<red>Your fly time is over."
+  warning: "<yellow>Fly time left: <white>{time}"
+  actionbar: "<gray>Fly time: <white>{time}"
+  loading: "<red>Your fly time is still loading, try again in a moment."
+
+admin:
+  added: "Added <white>{time}</white> to <white>{player}</white>. Now: <white>{total}"
+  removed: "Removed <white>{time}</white> from <white>{player}</white>. Now: <white>{total}"
+  set: "Fly time of <white>{player}</white> set to <white>{total}"
+  reset: "Fly time of <white>{player}</white> reset."
+  check: "<white>{player}</white> has <white>{total}</white> fly time."
+  help:
+    - "<bold><gradient:#c8f7dd:#4cc38a>ᴛᴇᴍᴘꜰʟʏ</gradient></bold> <gray>{version}"
+    - "<white>/tempfly add <player> <time> <gray>- give fly time, e.g. 30m, 1h30m, 2d"
+    - "<white>/tempfly remove <player> <time> <gray>- take fly time"
+    - "<white>/tempfly set <player> <time> <gray>- set the fly time"
+    - "<white>/tempfly reset <player> <gray>- fly time to 0"
+    - "<white>/tempfly check <player> <gray>- show the fly time"
+    - "<white>/tempfly reload <gray>- reload config and texts"
+
+time:
+  days: "{n}d"
+  hours: "{n}h"
+  minutes: "{n}m"
+  seconds: "{n}s"
+
+messages:
+  no-permission: "<red>You don't have permission to do that."
+  players-only: "<red>Only players can use this command."
+  player-not-found: "<red>There is no player called <white>{player}</white>."
+  invalid-time: "<red>That is not a valid time. <gray>Examples: <white>90</white>, <white>30m</white>, <white>1h30m</white>, <white>2d"
+  error: "<red>Something went wrong, please try again."
+  reloaded: "Configuration and texts reloaded."

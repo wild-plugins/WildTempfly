@@ -1,0 +1,29 @@
+# WildTempfly - settings
+# Every chat text is in lang.yml. Apply changes with /tempfly reload.
+
+# Worlds where /fly works
+worlds: [world]
+
+# true  = time only runs down while the player is flying
+# false = time runs down while fly mode is on, also on the ground
+count-only-while-flying: true
+
+# No fall damage when the time runs out or fly is turned off mid-air
+fall-protection: true
+
+# Seconds left at which the player gets a warning
+warnings: [60, 30, 10, 5, 3, 2, 1]
+
+# Time left in the action bar while fly mode is on
+actionbar: true
+
+# Sound names, "" = none
+sounds:
+  enable: entity.bat.takeoff
+  disable: block.note_block.bass
+  warning: block.note_block.hat
+
+commands:
+  # Aliases, need a restart
+  fly-aliases: []
+  admin-aliases: [wildtempfly]
