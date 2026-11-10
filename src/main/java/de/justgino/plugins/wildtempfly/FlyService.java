@@ -154,7 +154,9 @@ public final class FlyService implements Listener {
             return;
         }
         if (unlimited(player)) {
-            if (plugin.getConfig().getBoolean("actionbar", true)) player.sendActionBar(plugin.texts().get("fly.actionbar", "time", "∞"));
+            if (plugin.getConfig().getBoolean("actionbar", true) && plugin.getConfig().getBoolean("actionbar-unlimited", false)) {
+                player.sendActionBar(plugin.texts().get("fly.actionbar", "time", "∞"));
+            }
             return;
         }
         boolean counts = !plugin.getConfig().getBoolean("count-only-while-flying", true) || player.isFlying();
